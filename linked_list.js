@@ -1,6 +1,6 @@
 "use strict";
 
-let linked_list = {
+let list = {
     value: 1,
     next: {
         value: 2,
@@ -31,9 +31,19 @@ function printListI(list) {
     }
 }
 
-function printListIB(list) {
+function printReverseListI(list) {
+    let temp = []
     while (list) {
-        console.log(list.value)
+        temp.unshift(list.value)
         list = list.next
     }
+    temp.forEach(i => console.log(i));
 }
+
+printReverseListR(list)
+console.log('---------')
+printListR(list)
+console.log('---------')
+printListI(list)
+console.log('---------')
+printReverseListI(list)
