@@ -1,0 +1,2 @@
+* js-studies
+  These are exercises from https://javascript.info/ tutorial.
