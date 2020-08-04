@@ -1,0 +1,602 @@
+<style type="text/css">
+
+  .td_label_consulta_avancada {
+    text-align:right;
+    background-color: #A3DAE9;
+    font-weight:bold;
+    padding:4px;
+    width: 180px;
+  }
+
+  .td_conteudo_consulta_avancada {
+    text-align:left;
+    padding:4px;
+    width: 780px;
+  }
+.clearboth{ clear: both;  margin-bottom: 10px; width: 374px;}
+</style>
+
+<div>
+
+<form id='frmConsultaPublicaAvancada' name='frmConsultaPublicaAvancada' method='post' action='javascript:;'>
+
+<input type="hidden" name="data[CONSULTA_AVANCADA][hid_template]" value="listar-consulta-avancada-ies" id="hid_template" /><input type="hidden" name="data[CONSULTA_AVANCADA][hid_order]" value="ies.no_ies ASC" id="hid_order" /><input type="hidden" name="data[CONSULTA_AVANCADA][hid_no_cidade_avancada]" value="" id="hid_no_cidade_avancada" /><input type="hidden" name="data[CONSULTA_AVANCADA][hid_no_regiao_avancada]" value="" id="hid_no_regiao_avancada" /><input type="hidden" name="data[CONSULTA_AVANCADA][hid_no_pais_avancada]" value="" id="hid_no_pais_avancada" /><input type="hidden" name="data[CONSULTA_AVANCADA][hid_co_pais_avancada]" value="" id="hid_co_pais_avancada" />
+<table width="900" border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td class="td_label_consulta_avancada">
+    	Buscar por:
+    </td>
+    <td class="td_conteudo_consulta_avancada">
+    	<input name='data[CONSULTA_AVANCADA][rad_buscar_por]' type='radio' value='IES' id='consulta_avancada_rad_buscar_por' style='cursor: pointer' checked='checked'/>&nbsp;Institui&ccedil;&atilde;o de Ensino Superior&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][rad_buscar_por]' type='radio' value='CURSO' id='consulta_avancada_rad_buscar_por' style='cursor: pointer' />&nbsp;Curso de Gradua&ccedil;&atilde;o
+        <input name='data[CONSULTA_AVANCADA][rad_buscar_por]' type='radio' value='ESPECIALIZACAO' id='consulta_avancada_rad_buscar_por' style='cursor: pointer' />&nbsp;Curso de Especializa&ccedil;&atilde;o
+    </td>
+  </tr>
+  <tr class="buscar_por_ies">
+    <td class="buscar_por_ies td_label_consulta_avancada">
+    	Nome, Sigla ou C&oacute;digo da Institui&ccedil;&atilde;o:
+    </td>
+    <td class="buscar_por_ies td_conteudo_consulta_avancada">&nbsp;
+    	<input type="text" name="data[CONSULTA_AVANCADA][txt_no_ies]" id="txt_no_ies" value="" class="inputbox" style="width: 450px;" />     </td>
+  </tr>
+  <tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+    	Nome, Sigla ou C&oacute;digo da Institui&ccedil;&atilde;o:
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">&nbsp;
+    	<input type="text" name="data[CONSULTA_AVANCADA][txt_no_ies_curso]" id="txt_no_ies_curso" value="" class="inputbox" style="width: 450px;" />     </td>
+  </tr>
+  <tr class="buscar_por_especializacao">
+    <td class="buscar_por_especializacao td_label_consulta_avancada">
+    	Nome, Sigla ou C&oacute;digo da Institui&ccedil;&atilde;o:
+    </td>
+    <td class="buscar_por_especializacao td_conteudo_consulta_avancada">&nbsp;
+    	<input type="text" name="data[CONSULTA_AVANCADA][txt_no_ies_curso_especializacao]" id="txt_no_ies_curso_especializacao" value="" class="inputbox" style="width: 450px;" />     </td>
+  </tr>
+  <tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+    	Curso:
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">&nbsp;
+    	<input type="text" name="data[CONSULTA_AVANCADA][txt_no_curso]" id="txt_no_curso" value="" class="inputbox" style="width: 450px;" onchange="validaCampo()" />      <input name='data[CONSULTA_AVANCADA][chk_pesquisa_exata]' type='checkbox' value='S' id='consulta_avancada_chk_pesquisa_exata' />&nbsp;Pesquisa Exata&nbsp;&nbsp;
+   	</td>
+  </tr>
+	<tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+        Classifica&ccedil;&atilde;o de Curso:
+        <span style="color:#800000 "><br /><br />Filtro indispon&iacute;vel:<br/>Em processo de atualiza&ccedil;&atilde;o para a nova tabela de classifica&ccedil;&atilde;o CINE Brasil.</span>
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_co_area_geral]" id="sel_co_area" class="selectboxes clearboth">
+    <option title="Selecione &Aacute;rea Geral" value="" label="Selecione &Aacute;rea Geral" selected="selected">Selecione &Aacute;rea Geral</option>
+    <option title="00 - Programas básicos" value="1" label="00 - Programas básicos">00 - Programas básicos</option>
+    <option title="01 - Educação" value="2" label="01 - Educação">01 - Educação</option>
+    <option title="02 - Artes e humanidades" value="3" label="02 - Artes e humanidades">02 - Artes e humanidades</option>
+    <option title="03 - Ciências sociais, jornalismo e informação" value="4" label="03 - Ciências sociais, jornalismo e informação">03 - Ciências sociais, jornalismo e informação</option>
+    <option title="04 - Negócios, administração e direito" value="5" label="04 - Negócios, administração e direito">04 - Negócios, administração e direito</option>
+    <option title="05 - Ciências naturais, matemática e estatística" value="6" label="05 - Ciências naturais, matemática e estatística">05 - Ciências naturais, matemática e estatística</option>
+    <option title="06 - Computação e Tecnologias da Informação e Comunicação (TIC)" value="7" label="06 - Computação e Tecnologias da Informação e Comunicação (TIC)">06 - Computação e Tecnologias da Informação e Comunicação (TIC)</option>
+    <option title="07 - Engenharia, produção e construção" value="8" label="07 - Engenharia, produção e construção">07 - Engenharia, produção e construção</option>
+    <option title="08 - Agricultura, silvicultura, pesca e veterinária" value="9" label="08 - Agricultura, silvicultura, pesca e veterinária">08 - Agricultura, silvicultura, pesca e veterinária</option>
+    <option title="09 - Saúde e bem-estar" value="10" label="09 - Saúde e bem-estar">09 - Saúde e bem-estar</option>
+    <option title="10 - Serviços" value="11" label="10 - Serviços">10 - Serviços</option>
+</select>		<br />
+		<select name="data[CONSULTA_AVANCADA][sel_co_area_especifica]" id="sel_co_area_especifica" class="selectboxes clearboth">
+    <option title="Selecione &Aacute;rea Espec&iacute;fica" value="" label="Selecione &Aacute;rea Espec&iacute;fica" selected="selected">Selecione &Aacute;rea Espec&iacute;fica</option>
+    <option title="Agricultura, florestas e recursos pesqueiros" value="62" label="Agricultura, florestas e recursos pesqueiros">Agricultura, florestas e recursos pesqueiros</option>
+    <option title="Arquitetura e construção" value="58" label="Arquitetura e construção">Arquitetura e construção</option>
+    <option title="Artes" value="21" label="Artes">Artes</option>
+    <option title="Ciências" value="42" label="Ciências">Ciências</option>
+    <option title="Ciências físicas" value="44" label="Ciências físicas">Ciências físicas</option>
+    <option title="Ciências sociais e comportamentais" value="31" label="Ciências sociais e comportamentais">Ciências sociais e comportamentais</option>
+    <option title="Comércio e administração" value="34" label="Comércio e administração">Comércio e administração</option>
+    <option title="Computação" value="48" label="Computação">Computação</option>
+    <option title="Direito" value="38" label="Direito">Direito</option>
+    <option title="Engenharia e profissões correlatas" value="52" label="Engenharia e profissões correlatas">Engenharia e profissões correlatas</option>
+    <option title="Formação de professor e ciências da educação" value="14" label="Formação de professor e ciências da educação">Formação de professor e ciências da educação</option>
+    <option title="Humanidades e letras" value="22" label="Humanidades e letras">Humanidades e letras</option>
+    <option title="Jornalismo e informação" value="32" label="Jornalismo e informação">Jornalismo e informação</option>
+    <option title="Matemática e estatística" value="46" label="Matemática e estatística">Matemática e estatística</option>
+    <option title="Produção e processamento" value="54" label="Produção e processamento">Produção e processamento</option>
+    <option title="Proteção ambiental" value="85" label="Proteção ambiental">Proteção ambiental</option>
+    <option title="Saúde" value="72" label="Saúde">Saúde</option>
+    <option title="Serviços de segurnça" value="86" label="Serviços de segurnça">Serviços de segurnça</option>
+    <option title="Serviços de transportes (cursos gerais)" value="84" label="Serviços de transportes (cursos gerais)">Serviços de transportes (cursos gerais)</option>
+    <option title="Serviço social" value="76" label="Serviço social">Serviço social</option>
+    <option title="Serviços pessoais" value="81" label="Serviços pessoais">Serviços pessoais</option>
+    <option title="Veterinária" value="64" label="Veterinária">Veterinária</option>
+</select>		<br />
+		<select name="data[CONSULTA_AVANCADA][sel_co_area_detalhada]" id="sel_co_area_detalhada" class="selectboxes clearboth">
+    <option title="Selecione &Aacute;rea Detalhada" value="" label="Selecione &Aacute;rea Detalhada" selected="selected">Selecione &Aacute;rea Detalhada</option>
+    <option title="Agricultura, silvicultura e recursos pesqueiros  (cursos gerais)" value="620" label="Agricultura, silvicultura e recursos pesqueiros  (cursos gerais)">Agricultura, silvicultura e recursos pesqueiros  (cursos gerais)</option>
+    <option title="Ambientes naturais e vida selvagem" value="852" label="Ambientes naturais e vida selvagem">Ambientes naturais e vida selvagem</option>
+    <option title="Arquitetura e urbanismo" value="581" label="Arquitetura e urbanismo">Arquitetura e urbanismo</option>
+    <option title="Artesanato" value="215" label="Artesanato">Artesanato</option>
+    <option title="Artes (cursos gerais)" value="210" label="Artes (cursos gerais)">Artes (cursos gerais)</option>
+    <option title="Atendimento à criança e serviços para os jovens" value="761" label="Atendimento à criança e serviços para os jovens">Atendimento à criança e serviços para os jovens</option>
+    <option title="Belas artes" value="211" label="Belas artes">Belas artes</option>
+    <option title="Biblioteconomia, informação, arquivos" value="322" label="Biblioteconomia, informação, arquivos">Biblioteconomia, informação, arquivos</option>
+    <option title="Biologia e bioquímica" value="421" label="Biologia e bioquímica">Biologia e bioquímica</option>
+    <option title="Ciência da computação" value="481" label="Ciência da computação">Ciência da computação</option>
+    <option title="Ciência política e educação cívica" value="313" label="Ciência política e educação cívica">Ciência política e educação cívica</option>
+    <option title="Ciências ambientais" value="422" label="Ciências ambientais">Ciências ambientais</option>
+    <option title="Ciências (cursos gerais)" value="420" label="Ciências (cursos gerais)">Ciências (cursos gerais)</option>
+    <option title="Ciências da educação" value="142" label="Ciências da educação">Ciências da educação</option>
+    <option title="Ciências da terra" value="443" label="Ciências da terra">Ciências da terra</option>
+    <option title="Ciências domésticas" value="814" label="Ciências domésticas">Ciências domésticas</option>
+    <option title="Ciências físicas (cursos gerais)" value="440" label="Ciências físicas (cursos gerais)">Ciências físicas (cursos gerais)</option>
+    <option title="Ciências sociais e comportamentais (cursos gerais)" value="310" label="Ciências sociais e comportamentais (cursos gerais)">Ciências sociais e comportamentais (cursos gerais)</option>
+    <option title="Comércio e administração (cursos gerais)" value="340" label="Comércio e administração (cursos gerais)">Comércio e administração (cursos gerais)</option>
+    <option title="Contabilidade e tributação" value="344" label="Contabilidade e tributação">Contabilidade e tributação</option>
+    <option title="Design e estilismo" value="214" label="Design e estilismo">Design e estilismo</option>
+    <option title="Direito" value="380" label="Direito">Direito</option>
+    <option title="Economia" value="314" label="Economia">Economia</option>
+    <option title="Eletricidade e energia" value="522" label="Eletricidade e energia">Eletricidade e energia</option>
+    <option title="Eletrônica e automação" value="523" label="Eletrônica e automação">Eletrônica e automação</option>
+    <option title="Enfermagem e atenção primária (assistência básica)" value="723" label="Enfermagem e atenção primária (assistência básica)">Enfermagem e atenção primária (assistência básica)</option>
+    <option title="Engenharia civil e de construção " value="582" label="Engenharia civil e de construção ">Engenharia civil e de construção </option>
+    <option title="Engenharia e profissões de engenharia (cursos gerais)" value="520" label="Engenharia e profissões de engenharia (cursos gerais)">Engenharia e profissões de engenharia (cursos gerais)</option>
+    <option title="Engenharia florestal - silvicultura" value="623" label="Engenharia florestal - silvicultura">Engenharia florestal - silvicultura</option>
+    <option title="Engenharia mecânica e metalurgia (trabalhos com metais) " value="521" label="Engenharia mecânica e metalurgia (trabalhos com metais) ">Engenharia mecânica e metalurgia (trabalhos com metais) </option>
+    <option title="Esportes" value="813" label="Esportes">Esportes</option>
+    <option title="Estatística" value="462" label="Estatística">Estatística</option>
+    <option title="Fabricação e processamento (cursos gerais)" value="540" label="Fabricação e processamento (cursos gerais)">Fabricação e processamento (cursos gerais)</option>
+    <option title="Farmácia" value="727" label="Farmácia">Farmácia</option>
+    <option title="Filosofia e ética" value="226" label="Filosofia e ética">Filosofia e ética</option>
+    <option title="Finanças, bancos, seguros" value="343" label="Finanças, bancos, seguros">Finanças, bancos, seguros</option>
+    <option title="Física" value="441" label="Física">Física</option>
+    <option title="Formação de professor da educação básica" value="144" label="Formação de professor da educação básica">Formação de professor da educação básica</option>
+    <option title="Formação de professor de disciplinas profissionais" value="146" label="Formação de professor de disciplinas profissionais">Formação de professor de disciplinas profissionais</option>
+    <option title="Formação de professor de educação infantil " value="143" label="Formação de professor de educação infantil ">Formação de professor de educação infantil </option>
+    <option title="Formação de professor de matérias específicas" value="145" label="Formação de professor de matérias específicas">Formação de professor de matérias específicas</option>
+    <option title="Formação de professor e ciências da educação (cursos gerais)" value="140" label="Formação de professor e ciências da educação (cursos gerais)">Formação de professor e ciências da educação (cursos gerais)</option>
+    <option title="Gerenciamento e administração" value="345" label="Gerenciamento e administração">Gerenciamento e administração</option>
+    <option title="História e arqueologia" value="225" label="História e arqueologia">História e arqueologia</option>
+    <option title="Horticultura" value="622" label="Horticultura">Horticultura</option>
+    <option title="Hotelaria, restaurantes  e serviços de alimentação " value="811" label="Hotelaria, restaurantes  e serviços de alimentação ">Hotelaria, restaurantes  e serviços de alimentação </option>
+    <option title="Humanidades e letras (cursos gerais)" value="220" label="Humanidades e letras (cursos gerais)">Humanidades e letras (cursos gerais)</option>
+    <option title="Jornalismo e reportagem" value="321" label="Jornalismo e reportagem">Jornalismo e reportagem</option>
+    <option title="Língua materna (vernácula)" value="223" label="Língua materna (vernácula)">Língua materna (vernácula)</option>
+    <option title="Línguas e culturas estrangeiras" value="222" label="Línguas e culturas estrangeiras">Línguas e culturas estrangeiras</option>
+    <option title="Marketing e publicidade" value="342" label="Marketing e publicidade">Marketing e publicidade</option>
+    <option title="Matemática" value="461" label="Matemática">Matemática</option>
+    <option title="Materiais (madeira, papel, plástico, vidro)" value="543" label="Materiais (madeira, papel, plástico, vidro)">Materiais (madeira, papel, plástico, vidro)</option>
+    <option title="Medicina" value="721" label="Medicina">Medicina</option>
+    <option title="Mineração e extração" value="544" label="Mineração e extração">Mineração e extração</option>
+    <option title="Música e artes cênicas" value="212" label="Música e artes cênicas">Música e artes cênicas</option>
+    <option title="Odontologia " value="724" label="Odontologia ">Odontologia </option>
+    <option title="Processamento da informação " value="483" label="Processamento da informação ">Processamento da informação </option>
+    <option title="Processamento de alimentos" value="541" label="Processamento de alimentos">Processamento de alimentos</option>
+    <option title="Produção agrícola e pecuária" value="621" label="Produção agrícola e pecuária">Produção agrícola e pecuária</option>
+    <option title="Proteção ambiental (cursos gerais)" value="850" label="Proteção ambiental (cursos gerais)">Proteção ambiental (cursos gerais)</option>
+    <option title="Proteção de pessoas e de propriedades" value="861" label="Proteção de pessoas e de propriedades">Proteção de pessoas e de propriedades</option>
+    <option title="Psicologia" value="311" label="Psicologia">Psicologia</option>
+    <option title="Química" value="442" label="Química">Química</option>
+    <option title="Química e engenharia de processos" value="524" label="Química e engenharia de processos">Química e engenharia de processos</option>
+    <option title="Recursos pesqueiros" value="624" label="Recursos pesqueiros">Recursos pesqueiros</option>
+    <option title="Religião e teologia" value="221" label="Religião e teologia">Religião e teologia</option>
+    <option title="Saúde (cursos gerais)" value="720" label="Saúde (cursos gerais)">Saúde (cursos gerais)</option>
+    <option title="Saúde e segurança do trabalho" value="862" label="Saúde e segurança do trabalho">Saúde e segurança do trabalho</option>
+    <option title="Secretariado e trabalhos de escritório" value="346" label="Secretariado e trabalhos de escritório">Secretariado e trabalhos de escritório</option>
+    <option title="Serviços a particulares (cursos gerais)" value="810" label="Serviços a particulares (cursos gerais)">Serviços a particulares (cursos gerais)</option>
+    <option title="Serviços comunitários de saneamento " value="853" label="Serviços comunitários de saneamento ">Serviços comunitários de saneamento </option>
+    <option title="Serviços de beleza " value="815" label="Serviços de beleza ">Serviços de beleza </option>
+    <option title="Serviços de segurança (cursos gerais)" value="860" label="Serviços de segurança (cursos gerais)">Serviços de segurança (cursos gerais)</option>
+    <option title="Serviço social e orientação " value="762" label="Serviço social e orientação ">Serviço social e orientação </option>
+    <option title="Setor militar e de defesa" value="863" label="Setor militar e de defesa">Setor militar e de defesa</option>
+    <option title="Sociologia e estudos culturais" value="312" label="Sociologia e estudos culturais">Sociologia e estudos culturais</option>
+    <option title="Técnicas audiovisuais e produção de mídia" value="213" label="Técnicas audiovisuais e produção de mídia">Técnicas audiovisuais e produção de mídia</option>
+    <option title="Tecnologia de proteção ambiental" value="851" label="Tecnologia de proteção ambiental">Tecnologia de proteção ambiental</option>
+    <option title="Tecnologias de diagnóstico e tratamento médico" value="725" label="Tecnologias de diagnóstico e tratamento médico">Tecnologias de diagnóstico e tratamento médico</option>
+    <option title="Terapia e reabilitação" value="726" label="Terapia e reabilitação">Terapia e reabilitação</option>
+    <option title="Têxteis, roupas, calçados, couros" value="542" label="Têxteis, roupas, calçados, couros">Têxteis, roupas, calçados, couros</option>
+    <option title="Transportes e serviços (cursos gerais)" value="840" label="Transportes e serviços (cursos gerais)">Transportes e serviços (cursos gerais)</option>
+    <option title="Uso do computador" value="482" label="Uso do computador">Uso do computador</option>
+    <option title="Veículos a motor, construção naval e aeronáutica" value="525" label="Veículos a motor, construção naval e aeronáutica">Veículos a motor, construção naval e aeronáutica</option>
+    <option title="Vendas em atacado e varejo" value="341" label="Vendas em atacado e varejo">Vendas em atacado e varejo</option>
+    <option title="Veterinária" value="641" label="Veterinária">Veterinária</option>
+    <option title="Viagens, turismo e lazer" value="812" label="Viagens, turismo e lazer">Viagens, turismo e lazer</option>
+    <option title="Vida profissional" value="347" label="Vida profissional">Vida profissional</option>
+</select>		<br />
+		<select name="data[CONSULTA_AVANCADA][sel_co_area_curso]" id="sel_co_area_curso" class="selectboxes clearboth">
+    <option title="Selecione &Aacute;rea Curso" value="" label="Selecione &Aacute;rea Curso" selected="selected">Selecione &Aacute;rea Curso</option>
+</select>     </td>
+  </tr>
+
+  <tr class="buscar_por_especializacao">
+    <td class="buscar_por_especializacao td_label_consulta_avancada">
+    	Curso:
+    </td>
+    <td class="buscar_por_especializacao td_conteudo_consulta_avancada">&nbsp;
+    	<input type="text" name="data[CONSULTA_AVANCADA][txt_no_especializacao]" id="txt_no_especializacao" value="" class="inputbox" style="width: 450px;" />   	</td>
+  </tr>
+  <tr class="buscar_por_especializacao">
+    <td class="buscar_por_especializacao td_label_consulta_avancada">
+    	&Aacute;rea:
+    </td>
+    <td class="buscar_por_especializacao td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_co_area]" id="sel_co_area" class="selectboxes">
+    <option title="Selecione &Aacute;rea Geral" value="" label="Selecione &Aacute;rea Geral" selected="selected">Selecione &Aacute;rea Geral</option>
+    <option title="00 - Programas básicos" value="1" label="00 - Programas básicos">00 - Programas básicos</option>
+    <option title="01 - Educação" value="2" label="01 - Educação">01 - Educação</option>
+    <option title="02 - Artes e humanidades" value="3" label="02 - Artes e humanidades">02 - Artes e humanidades</option>
+    <option title="03 - Ciências sociais, jornalismo e informação" value="4" label="03 - Ciências sociais, jornalismo e informação">03 - Ciências sociais, jornalismo e informação</option>
+    <option title="04 - Negócios, administração e direito" value="5" label="04 - Negócios, administração e direito">04 - Negócios, administração e direito</option>
+    <option title="05 - Ciências naturais, matemática e estatística" value="6" label="05 - Ciências naturais, matemática e estatística">05 - Ciências naturais, matemática e estatística</option>
+    <option title="06 - Computação e Tecnologias da Informação e Comunicação (TIC)" value="7" label="06 - Computação e Tecnologias da Informação e Comunicação (TIC)">06 - Computação e Tecnologias da Informação e Comunicação (TIC)</option>
+    <option title="07 - Engenharia, produção e construção" value="8" label="07 - Engenharia, produção e construção">07 - Engenharia, produção e construção</option>
+    <option title="08 - Agricultura, silvicultura, pesca e veterinária" value="9" label="08 - Agricultura, silvicultura, pesca e veterinária">08 - Agricultura, silvicultura, pesca e veterinária</option>
+    <option title="09 - Saúde e bem-estar" value="10" label="09 - Saúde e bem-estar">09 - Saúde e bem-estar</option>
+    <option title="10 - Serviços" value="11" label="10 - Serviços">10 - Serviços</option>
+</select>   	</td>
+  </tr>
+  <tr>
+    <td class="td_label_consulta_avancada">
+    	UF:
+    </td>
+    <td class="td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_sg_uf]" id="sel_sg_uf" class="selectboxes">
+    <option title="Selecione..." value="" label="Selecione..." selected="selected">Selecione...</option>
+    <option title="Acre" value="AC" label="Acre">Acre</option>
+    <option title="Alagoas" value="AL" label="Alagoas">Alagoas</option>
+    <option title="Amazonas" value="AM" label="Amazonas">Amazonas</option>
+    <option title="Amapá" value="AP" label="Amapá">Amapá</option>
+    <option title="Bahia" value="BA" label="Bahia">Bahia</option>
+    <option title="Ceará" value="CE" label="Ceará">Ceará</option>
+    <option title="Distrito Federal" value="DF" label="Distrito Federal">Distrito Federal</option>
+    <option title="Espírito Santo" value="ES" label="Espírito Santo">Espírito Santo</option>
+    <option title="Goiás" value="GO" label="Goiás">Goiás</option>
+    <option title="Maranhão" value="MA" label="Maranhão">Maranhão</option>
+    <option title="Minas Gerais" value="MG" label="Minas Gerais">Minas Gerais</option>
+    <option title="Mato Grosso do Sul" value="MS" label="Mato Grosso do Sul">Mato Grosso do Sul</option>
+    <option title="Mato Grosso" value="MT" label="Mato Grosso">Mato Grosso</option>
+    <option title="Pará" value="PA" label="Pará">Pará</option>
+    <option title="Paraíba" value="PB" label="Paraíba">Paraíba</option>
+    <option title="Pernambuco" value="PE" label="Pernambuco">Pernambuco</option>
+    <option title="Piauí" value="PI" label="Piauí">Piauí</option>
+    <option title="Paraná" value="PR" label="Paraná">Paraná</option>
+    <option title="Rio de Janeiro" value="RJ" label="Rio de Janeiro">Rio de Janeiro</option>
+    <option title="Rio Grande do Norte" value="RN" label="Rio Grande do Norte">Rio Grande do Norte</option>
+    <option title="Rondônia" value="RO" label="Rondônia">Rondônia</option>
+    <option title="Roraima" value="RR" label="Roraima">Roraima</option>
+    <option title="Rio Grande do Sul" value="RS" label="Rio Grande do Sul">Rio Grande do Sul</option>
+    <option title="Santa Catarina" value="SC" label="Santa Catarina">Santa Catarina</option>
+    <option title="Sergipe" value="SE" label="Sergipe">Sergipe</option>
+    <option title="São Paulo" value="SP" label="São Paulo">São Paulo</option>
+    <option title="Tocantins" value="TO" label="Tocantins">Tocantins</option>
+    <option title="IGNORADO/EXTERIOR" value="ZZ" label="IGNORADO/EXTERIOR">IGNORADO/EXTERIOR</option>
+</select>    </td>
+  </tr>
+  <tr>
+    <td class="td_label_consulta_avancada">
+    	Munic&iacute;pio:
+    </td>
+
+    <td class="td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_co_municipio]" id="sel_co_municipio" class="selectboxes">
+    
+</select>     </td>
+  </tr>
+  <tr class="buscar_por_ies">
+    <td class="buscar_por_ies td_label_consulta_avancada">
+    	Categoria Administrativa:
+    </td>
+    <td class="buscar_por_ies td_conteudo_consulta_avancada">
+                    <input name='data[CONSULTA_AVANCADA][chk_tp_natureza_gn][]'
+                   type='checkbox'
+                   value='3'
+                   id='consulta_avancada_chk_tp_natureza_gn' />
+            &nbsp;Pública Municipal&nbsp;
+            
+                    <input name='data[CONSULTA_AVANCADA][chk_tp_natureza_gn][]'
+                   type='checkbox'
+                   value='1'
+                   id='consulta_avancada_chk_tp_natureza_gn' />
+            &nbsp;Pública Federal&nbsp;
+            
+                    <input name='data[CONSULTA_AVANCADA][chk_tp_natureza_gn][]'
+                   type='checkbox'
+                   value='2'
+                   id='consulta_avancada_chk_tp_natureza_gn' />
+            &nbsp;Pública Estadual&nbsp;
+            <br/>
+                    <input name='data[CONSULTA_AVANCADA][chk_tp_natureza_gn][]'
+                   type='checkbox'
+                   value='5'
+                   id='consulta_avancada_chk_tp_natureza_gn' />
+            &nbsp;Privada sem fins lucrativos&nbsp;
+            
+                    <input name='data[CONSULTA_AVANCADA][chk_tp_natureza_gn][]'
+                   type='checkbox'
+                   value='4'
+                   id='consulta_avancada_chk_tp_natureza_gn' />
+            &nbsp;Privada com fins lucrativos&nbsp;
+            
+                    <input name='data[CONSULTA_AVANCADA][chk_tp_natureza_gn][]'
+                   type='checkbox'
+                   value='7'
+                   id='consulta_avancada_chk_tp_natureza_gn' />
+            &nbsp;Especial&nbsp;
+            <br/>
+           	</td>
+  </tr>
+  <tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+    	Gratuidade do Curso:
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_st_gratuito]" id="sel_st_gratuito" class="selectboxes">
+    <option title="Selecione..." value="" label="Selecione..." selected="selected">Selecione...</option>
+    <option title="Sim" value="S" label="Sim">Sim</option>
+    <option title="N&atilde;o" value="N" label="N&atilde;o">N&atilde;o</option>
+</select>   	</td>
+  </tr>
+  <tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+    	Modalidade:
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">
+    	<input name='data[CONSULTA_AVANCADA][chk_tp_modalidade_gn][]' type='checkbox' value='10066' id='consulta_avancada_chk_tp_modalidade_gn' />&nbsp;A Dist&acirc;ncia&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_modalidade_gn][]' type='checkbox' value='10065' id='consulta_avancada_chk_tp_modalidade_gn' />&nbsp;Presencial
+   	</td>
+  </tr>
+  <tr class="buscar_por_especializacao">
+    <td class="buscar_por_especializacao td_label_consulta_avancada">
+    	Modalidade:
+    </td>
+    <td class="buscar_por_especializacao td_conteudo_consulta_avancada">
+    	<input name='data[CONSULTA_AVANCADA][chk_tp_modalidade_gn][]' type='checkbox' value='10066' id='consulta_avancada_chk_tp_modalidade_gn' />&nbsp;A Dist&acirc;ncia&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_modalidade_gn][]' type='checkbox' value='10065' id='consulta_avancada_chk_tp_modalidade_gn' />&nbsp;Presencial
+   	</td>
+  </tr>
+  <tr class="buscar_por_ies">
+    <td class="buscar_por_ies td_label_consulta_avancada">
+    	Organiza&ccedil;&atilde;o Acad&ecirc;mica:
+    </td>
+    <td class="buscar_por_ies td_conteudo_consulta_avancada">
+    	<input name='data[CONSULTA_AVANCADA][chk_tp_organizacao_gn][]' type='checkbox' value='10022,10024,10023,10027' id='consulta_avancada_chk_tp_organizacao_gn' />&nbsp;Faculdade&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_organizacao_gn][]' type='checkbox' value='10019,10020,10021,10026' id='consulta_avancada_chk_tp_organizacao_gn' />&nbsp;Centro Universit&aacute;rio&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_organizacao_gn][]' type='checkbox' value='10026,10019' id='consulta_avancada_chk_tp_organizacao_gn' />&nbsp;Institutos Federais&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_organizacao_gn][]' type='checkbox' value='10028,10029' id='consulta_avancada_chk_tp_organizacao_gn' />&nbsp;Universidade
+        <input name='data[CONSULTA_AVANCADA][chk_tp_organizacao_gn][]' type='checkbox' value='893' id='consulta_avancada_chk_tp_organizacao_gn' />&nbsp;Escola de Governo
+
+   	</td>
+  </tr>
+  <tr class="buscar_por_ies">
+    <td class="buscar_por_ies td_label_consulta_avancada">
+    	Tipo de Credenciamento:
+    </td>
+    <td class="buscar_por_ies td_conteudo_consulta_avancada">
+                            <input name='data[CONSULTA_AVANCADA][chk_tp_credenciamento_gn][]'
+                           type='checkbox'
+                           value='112'
+                           id='consulta_avancada_chk_tp_credenciamento_gn' />
+                    &nbsp;Presencial&nbsp;
+                    
+                            <input name='data[CONSULTA_AVANCADA][chk_tp_credenciamento_gn][]'
+                           type='checkbox'
+                           value='113'
+                           id='consulta_avancada_chk_tp_credenciamento_gn' />
+                    &nbsp;EAD&nbsp;
+                    
+        
+                            <input name='data[CONSULTA_AVANCADA][chk_tp_credenciamento_gn][]'
+                           type='checkbox'
+                           value='891'
+                           id='consulta_avancada_chk_tp_credenciamento_gn' />
+                    &nbsp;Escola Governo - EaD&nbsp;
+                    <br/>
+                            <input name='data[CONSULTA_AVANCADA][chk_tp_credenciamento_gn][]'
+                           type='checkbox'
+                           value='894'
+                           id='consulta_avancada_chk_tp_credenciamento_gn' />
+                    &nbsp;Escola Governo - Presencial&nbsp;
+                    
+           	</td>
+  </tr>
+  <tr class="buscar_por_ies">
+    <td class="buscar_por_ies td_label_consulta_avancada">
+      &Iacute;ndice:
+    </td>
+    <td class="buscar_por_ies td_conteudo_consulta_avancada">
+    	<div style="padding-top: 5px">
+        	<select name="data[CONSULTA_AVANCADA][sel_no_indice_ies]" id="sel_no_indice_ies" class="selectboxes" title="Índice da IES">
+    <option title="Selecione..." value="" label="Selecione..." selected="selected">Selecione...</option>
+    <option title="CI" value="ci" label="CI">CI</option>
+    <option title="CI-EaD" value="ciead" label="CI-EaD">CI-EaD</option>
+    <option title="IGC" value="igc" label="IGC">IGC</option>
+</select>    		<div style=" padding-left: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;
+    		                <input disabled class="sel_co_indice_ies" name='data[CONSULTA_AVANCADA][sel_co_indice_ies][]'
+                       type='checkbox'
+                       value="1"
+                       id='sel_co_indice_ies' />
+               1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <input disabled class="sel_co_indice_ies" name='data[CONSULTA_AVANCADA][sel_co_indice_ies][]'
+                       type='checkbox'
+                       value="2"
+                       id='sel_co_indice_ies' />
+               2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <input disabled class="sel_co_indice_ies" name='data[CONSULTA_AVANCADA][sel_co_indice_ies][]'
+                       type='checkbox'
+                       value="3"
+                       id='sel_co_indice_ies' />
+               3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <input disabled class="sel_co_indice_ies" name='data[CONSULTA_AVANCADA][sel_co_indice_ies][]'
+                       type='checkbox'
+                       value="4"
+                       id='sel_co_indice_ies' />
+               4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <input disabled class="sel_co_indice_ies" name='data[CONSULTA_AVANCADA][sel_co_indice_ies][]'
+                       type='checkbox'
+                       value="5"
+                       id='sel_co_indice_ies' />
+               5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <input disabled class="sel_co_indice_ies" name='data[CONSULTA_AVANCADA][sel_co_indice_ies][]'
+                       type='checkbox'
+                       value="SC"
+                       id='sel_co_indice_ies' />
+               SC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    		</div>
+		</div>
+   	</td>
+  </tr>
+  <tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+    	Grau:
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">
+    	<input name='data[CONSULTA_AVANCADA][chk_tp_tipo_grau_gn][]' type='checkbox' value='10049,10042,10043,10044' id='consulta_avancada_chk_tp_tipo_grau_gn' />&nbsp;Bacharelado&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_tipo_grau_gn][]' type='checkbox' value='10050,10037,10038,10039' id='consulta_avancada_chk_tp_tipo_grau_gn' />&nbsp;Licenciatura&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_tipo_grau_gn][]' type='checkbox' value='10051' id='consulta_avancada_chk_tp_tipo_grau_gn' />&nbsp;Tecnol&oacute;gico&nbsp;&nbsp;
+        <input name='data[CONSULTA_AVANCADA][chk_tp_tipo_grau_gn][]' type='checkbox' value='10052,10045,10046' id='consulta_avancada_chk_tp_tipo_grau_gn' />&nbsp;Sequencial
+   	</td>
+  </tr>
+  <tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+      &Iacute;ndice:
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">&nbsp;
+    	<div style="padding-top: 5px">
+        	<select name="data[CONSULTA_AVANCADA][sel_no_indice_curso]" id="sel_no_indice_curso" class="selectboxes" title="Índice do Curso">
+    <option title="Selecione..." value="" label="Selecione..." selected="selected">Selecione...</option>
+    <option title="CC" value="cc" label="CC">CC</option>
+    <option title="CPC" value="cpc" label="CPC">CPC</option>
+    <option title="ENADE" value="enade" label="ENADE">ENADE</option>
+    <option title="IDD" value="idd" label="IDD">IDD</option>
+</select>    		<div style=" padding-left: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;
+        		                    <input class="sel_co_indice_curso" disabled name='data[CONSULTA_AVANCADA][sel_co_indice_curso][]'
+                           type='checkbox'
+                           value='1'
+                           id='sel_co_indice_curso' />
+                   1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    <input class="sel_co_indice_curso" disabled name='data[CONSULTA_AVANCADA][sel_co_indice_curso][]'
+                           type='checkbox'
+                           value='2'
+                           id='sel_co_indice_curso' />
+                   2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    <input class="sel_co_indice_curso" disabled name='data[CONSULTA_AVANCADA][sel_co_indice_curso][]'
+                           type='checkbox'
+                           value='3'
+                           id='sel_co_indice_curso' />
+                   3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    <input class="sel_co_indice_curso" disabled name='data[CONSULTA_AVANCADA][sel_co_indice_curso][]'
+                           type='checkbox'
+                           value='4'
+                           id='sel_co_indice_curso' />
+                   4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    <input class="sel_co_indice_curso" disabled name='data[CONSULTA_AVANCADA][sel_co_indice_curso][]'
+                           type='checkbox'
+                           value='5'
+                           id='sel_co_indice_curso' />
+                   5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    <input class="sel_co_indice_curso" disabled name='data[CONSULTA_AVANCADA][sel_co_indice_curso][]'
+                           type='checkbox'
+                           value='SC'
+                           id='sel_co_indice_curso' />
+                   SC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    		</div>
+		</div>
+   	</td>
+  </tr>
+  <tr class="buscar_por_ies">
+    <td class="buscar_por_ies td_label_consulta_avancada">
+    	Situa&ccedil;&atilde;o:
+    </td>
+    <td class="buscar_por_ies td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_co_situacao_funcionamento_ies]" id="sel_co_situacao_funcionamento_ies" class="selectboxes">
+    <option title="Ativa" value="10035" label="Ativa" selected="selected">Ativa</option>
+</select>     </td>
+  </tr>
+  <tr class="buscar_por_curso">
+    <td class="buscar_por_curso td_label_consulta_avancada">
+    	Situa&ccedil;&atilde;o:
+    </td>
+    <td class="buscar_por_curso td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_co_situacao_funcionamento_curso]" id="sel_co_situacao_funcionamento_curso" class="selectboxes">
+    <option title="Todos" value="9" label="Todos" selected="selected">Todos</option>
+    <option title="Em Atividade" value="10056" label="Em Atividade">Em Atividade</option>
+    <option title="Em Extin&ccedil;&atilde;o" value="10058" label="Em Extin&ccedil;&atilde;o">Em Extin&ccedil;&atilde;o</option>
+    <option title="Extinto" value="10057" label="Extinto">Extinto</option>
+</select>     </td>
+  </tr>
+  <tr class="buscar_por_especializacao">
+    <td class="buscar_por_especializacao td_label_consulta_avancada">
+    	Situa&ccedil;&atilde;o:
+    </td>
+    <td class="buscar_por_especializacao td_conteudo_consulta_avancada">&nbsp;
+    	<select name="data[CONSULTA_AVANCADA][sel_st_funcionamento_especializacao]" id="sel_st_funcionamento_especializacao" class="selectboxes">
+    <option title="Todos" value="" label="Todos">Todos</option>
+    <option title="Ativo" value="S" label="Ativo">Ativo</option>
+    <option title="Desativado" value="N" label="Desativado">Desativado</option>
+</select>     </td>
+  </tr>
+    <tr>
+  	<td class="td_label_consulta_avancada"></td>
+  	<td>
+  		<br style="clear: both;">
+  		<br style="clear: both;">
+  		<img src="https://emec.mec.gov.br/emec/emec/nova-index/captcha" id="captcha-imagem-avancado"/>
+  		<div style="float: left; margin-left: 20px;">
+  			<fieldset>
+		  		<legend>C&oacute;digo de verifica&ccedil;&atilde;o: <span style="color:red">*</span></legend>
+		        <input class="inputbox required" maxlength="4" name="captcha" id="captcha-avancado" type="text" title="Digite o c&oacute;digo" placeholder="Digite o c&oacute;digo" autocomplete="off" />
+		        <br style="clear: both;">
+		        <br style="clear: both;">
+		  		<a href="#" id="atualiza-captcha-avancado" class="btn" style="margin-bottom: 10px; float: left;">Trocar imagem</a>
+		        <br style="clear: both;">
+  			</fieldset>
+  		</div>
+  	</td>
+  </tr>
+  <tr>
+    <td class="td_label_consulta_avancada">
+      &nbsp;
+    </td>
+        <td class="td_conteudo_consulta_avancada">
+    	<input type="submit" name="btnPesqAvancada" id="btnPesqAvancada" value="Pesquisar" class="btn" title="Pesquisar" style="width: 150px;" onClick="validaCampo()" />   	</td>
+  </tr>
+
+</table>
+
+</form>
+
+<br /><br />
+
+<div id="div_listar_consulta_avancada" style="background-color: #fff; text-align: center; padding: 4px"></div>
+
+<script type="text/javascript" src="/emec/js/business/consulta-publica/consulta-avancada.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready( function()
+{
+	var paramjson = {};
+    $('#sel_co_area').attr('disabled','disabled');
+    $('#sel_co_area_especifica').attr('disabled','disabled');
+    $('#sel_co_area_detalhada').attr('disabled','disabled');
+    $('#sel_co_area_curso').attr('disabled','disabled');
+    $('.sel_co_indice_curso').attr('disabled','disabled');
+
+
+	$('#sel_no_indice_curso').change(function(){
+		var value = $(this).val();
+
+		if(value != ''){
+			$('.sel_co_indice_curso').removeAttr('disabled');
+		}else{
+			$('.sel_co_indice_curso').attr('disabled','disabled');
+		}
+	});
+
+	$('#sel_no_indice_ies').change(function(){
+		var value = $(this).val();
+
+		if(value != ''){
+			$('.sel_co_indice_ies').removeAttr('disabled');
+		}else{
+			$('.sel_co_indice_ies').attr('disabled','disabled');
+		}
+
+	});
+
+	objTelaConsultaPublicaAvandaca.init( paramjson );
+} ); // end ready
+
+function validaCampo()
+{
+    var noCurso=document.getElementById("txt_no_curso");
+
+    if ((noCurso.value.length >= 1) && (noCurso.value.length < 3)){
+        alert("Digite pelo menos 3 caracteres");
+        event.preventDefault();
+    }
+}
+</script>
